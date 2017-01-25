@@ -20,7 +20,6 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = '9.0'
   s.libraries = 'xml2'
   s.framework = 'QuartzCore', 'CoreText'
-  s.dependency 'CocoaLumberjack', '~> 2.x'
   s.prefix_header_file = 'SVGKitLibrary/SVGKit-iOS/SVGKit-iOS-Prefix.pch'
   s.requires_arc = true
   s.xcconfig = {
