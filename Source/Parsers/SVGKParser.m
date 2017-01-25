@@ -141,7 +141,7 @@ SVGKParser* getCurrentlyParsingParser()
 	
 	if( [self.parserExtensions containsObject:extension])
 	{
-		SVGKitLogVerbose(@"[%@] WARNING: attempted to add a ParserExtension that was already added = %@", [self class], extension);
+//		SVGKitLogVerbose(@"[%@] WARNING: attempted to add a ParserExtension that was already added = %@", [self class], extension);
 		return;
 	}
 	
@@ -177,7 +177,7 @@ SVGKParser* getCurrentlyParsingParser()
 {
 	if( self.currentParseRun != nil )
 	{
-		SVGKitLogError(@"FATAL: attempting to run the parser twice in one thread; limxml is single-threaded only, so we are too (until someone wraps libxml to be multi-threaded)");
+//		SVGKitLogError(@"FATAL: attempting to run the parser twice in one thread; limxml is single-threaded only, so we are too (until someone wraps libxml to be multi-threaded)");
 	}
 	
 	self.currentParseRun = [SVGKParseResult new];
@@ -243,7 +243,7 @@ SVGKParser* getCurrentlyParsingParser()
 			
 			if( self.hasCancelBeenRequested )
 			{
-				SVGKitLogInfo( @"SVGKParser: 'cancel parse' discovered; bailing on this XML parse" );
+//				SVGKitLogInfo( @"SVGKParser: 'cancel parse' discovered; bailing on this XML parse" );
 				break;
 			}
 			else
@@ -263,7 +263,7 @@ SVGKParser* getCurrentlyParsingParser()
 			}
 			@catch( NSException* e )
 			{
-				SVGKitLogError( @"Exception while trying to parse SVG file, will store in parse results. Exception = %@", e);
+//				SVGKitLogError( @"Exception while trying to parse SVG file, will store in parse results. Exception = %@", e);
 				[currentParseRun addParseErrorFatal:[NSError errorWithDomain:@"SVGK Parsing" code:32523432 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"Exception = %@", e]}]];
 			}
 			
@@ -272,15 +272,15 @@ SVGKParser* getCurrentlyParsingParser()
 				// 3.   if libxml failed chunk, break
 				if( libXmlParserParseError > 0 )
 				{
-				SVGKitLogVerbose(@"[%@] libXml reported internal parser error with magic libxml code = %li (look this up on http://xmlsoft.org/html/libxml-xmlerror.html#xmlParserErrors)", [self class], (long)libXmlParserParseError );
+//				SVGKitLogVerbose(@"[%@] libXml reported internal parser error with magic libxml code = %li (look this up on http://xmlsoft.org/html/libxml-xmlerror.html#xmlParserErrors)", [self class], (long)libXmlParserParseError );
 				currentParseRun.libXMLFailed = YES;
 				}
 				else
 				{
-					SVGKitLogWarn(@"[%@] SVG parser generated one or more FATAL errors (not the XML parser), errors follow:", [self class] );
+//					SVGKitLogWarn(@"[%@] SVG parser generated one or more FATAL errors (not the XML parser), errors follow:", [self class] );
 					for( NSError* error in currentParseRun.errorsFatal )
 					{
-						SVGKitLogWarn(@"[%@] ... FATAL ERRRO in SVG parse: %@", [self class], error );
+//						SVGKitLogWarn(@"[%@] ... FATAL ERRRO in SVG parse: %@", [self class], error );
 					}
 				}
 				
@@ -340,7 +340,7 @@ SVGKParser* getCurrentlyParsingParser()
         
         if( cssText == nil )
         {
-            SVGKitLogWarn(@"[%@] Unable to find external CSS file '%@'", [self class], href );
+//            SVGKitLogWarn(@"[%@] Unable to find external CSS file '%@'", [self class], href );
         }
         else
         {
@@ -478,7 +478,7 @@ static void processingInstructionSAX (void * ctx,
 			Node* subParserResult = [subParser handleStartElement:name document:source namePrefix:prefix namespaceURI:XMLNSURI attributes:attributeObjects parseResult:self.currentParseRun parentNode:_parentOfCurrentNode];
 			
 #if DEBUG_XML_PARSER
-			SVGKitLogVerbose(@"[%@] tag: <%@:%@> id=%@ -- handled by subParser: %@", [self class], prefix, name, ([((Attr*)[attributeObjects objectForKey:@"id"]) value] != nil?[((Attr*)[attributeObjects objectForKey:@"id"]) value]:@"(none)"), subParser );
+//			SVGKitLogVerbose(@"[%@] tag: <%@:%@> id=%@ -- handled by subParser: %@", [self class], prefix, name, ([((Attr*)[attributeObjects objectForKey:@"id"]) value] != nil?[((Attr*)[attributeObjects objectForKey:@"id"]) value]:@"(none)"), subParser );
 #endif
 			
 			/** Add the new (partially parsed) node to the parent node in tree
@@ -507,7 +507,7 @@ static void processingInstructionSAX (void * ctx,
 	NSObject<SVGKParserExtension>* eventualParser = defaultParserForThisNamespace != nil ? defaultParserForThisNamespace : defaultParserForEverything;
 	NSAssert( eventualParser != nil, @"Found a tag (prefix:%@ name:%@) that was rejected by all the parsers available. Perhaps you forgot to include a default parser (usually: SVGKParserDOM, which will handle any / all XML tags)", prefix, name );
 	
-	SVGKitLogVerbose(@"[%@] WARN: found a tag with no namespace parser: (</%@>), using default parser(%@)", [self class], name, eventualParser );
+//	SVGKitLogVerbose(@"[%@] WARN: found a tag with no namespace parser: (</%@>), using default parser(%@)", [self class], name, eventualParser );
 	
 	
 	[_stackOfParserExtensions addObject:eventualParser];
@@ -516,7 +516,7 @@ static void processingInstructionSAX (void * ctx,
 	Node* subParserResult = [eventualParser handleStartElement:name document:source namePrefix:prefix namespaceURI:XMLNSURI attributes:attributeObjects parseResult:self.currentParseRun parentNode:_parentOfCurrentNode];
 	
 #if DEBUG_XML_PARSER
-	SVGKitLogVerbose(@"[%@] tag: <%@:%@> id=%@ -- handled by subParser: %@", [self class], prefix, name, ([((Attr*)[attributeObjects objectForKey:@"id"]) value] != nil?[((Attr*)[attributeObjects objectForKey:@"id"]) value]:@"(none)"), eventualParser );
+//	SVGKitLogVerbose(@"[%@] tag: <%@:%@> id=%@ -- handled by subParser: %@", [self class], prefix, name, ([((Attr*)[attributeObjects objectForKey:@"id"]) value] != nil?[((Attr*)[attributeObjects objectForKey:@"id"]) value]:@"(none)"), eventualParser );
 #endif
 	
 	/** Add the new (partially parsed) node to the parent node in tree
@@ -628,7 +628,7 @@ static void startElementSAX (void *ctx, const xmlChar *localname, const xmlChar 
 	
 #if DEBUG_XML_PARSER
 #if DEBUG_VERBOSE_LOG_EVERY_TAG
-	SVGKitLogWarn(@"[%@] DEBUG_VERBOSE: <%@%@> (namespace URL:%@), attributes: %i", [self class], [NSString stringWithFormat:@"%@:",stringPrefix], name, stringURI, nb_attributes );
+//	SVGKitLogWarn(@"[%@] DEBUG_VERBOSE: <%@%@> (namespace URL:%@), attributes: %i", [self class], [NSString stringWithFormat:@"%@:",stringPrefix], name, stringURI, nb_attributes );
 #endif
 #endif
 	
@@ -660,7 +660,7 @@ static void startElementSAX (void *ctx, const xmlChar *localname, const xmlChar 
 	
 	if( stringURI == nil && stringPrefix == nil )
 	{
-		SVGKitLogWarn(@"[%@] WARNING: Your input SVG contains tags that have no namespace, and your document doesn't define a default namespace. This is always incorrect - it means some of your SVG data will be ignored, and usually means you have a typo in there somewhere. Tag with no namespace: <%@>", [self class], stringLocalName );
+//		SVGKitLogWarn(@"[%@] WARNING: Your input SVG contains tags that have no namespace, and your document doesn't define a default namespace. This is always incorrect - it means some of your SVG data will be ignored, and usually means you have a typo in there somewhere. Tag with no namespace: <%@>", [self class], stringLocalName );
 	}
 		  
 	[self handleStartElement:stringLocalName namePrefix:stringPrefix namespaceURI:stringURI attributeObjects:attributeObjects];
@@ -679,7 +679,7 @@ static void startElementSAX (void *ctx, const xmlChar *localname, const xmlChar 
 	
 #if DEBUG_XML_PARSER
 #if DEBUG_VERBOSE_LOG_EVERY_TAG
-	SVGKitLogVerbose(@"[%@] DEBUG-PARSER: ended tag (</%@>), handled by parser (%@) with parent parsed by %@", [self class], name, parser, parentParser );
+//	SVGKitLogVerbose(@"[%@] DEBUG-PARSER: ended tag (</%@>), handled by parser (%@) with parent parsed by %@", [self class], name, parser, parentParser );
 #endif
 #endif
 	
@@ -729,7 +729,7 @@ static void	charactersFoundSAX (void *ctx, const xmlChar *chars, int len) {
 }
 
 static void errorEncounteredSAX (void *ctx, const char *msg, ...) {
-	SVGKitLogWarn(@"Error encountered during parse: %s", msg);
+//	SVGKitLogWarn(@"Error encountered during parse: %s", msg);
 	SVGKParser* self = getCurrentlyParsingParser();
 	SVGKParseResult* parseResult = self.currentParseRun;
 	[parseResult addSAXError:[NSError errorWithDomain:@"SVG-SAX" code:1 userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
@@ -743,7 +743,7 @@ static void	unparsedEntityDeclaration(void * ctx,
 									 const xmlChar * systemId,
 									 const xmlChar * notationName)
 {
-	SVGKitLogWarn(@"Error: unparsed entity Decl");
+//	SVGKitLogWarn(@"Error: unparsed entity Decl");
 }
 
 static void structuredError		(void * userData, 
@@ -892,7 +892,7 @@ static NSMutableDictionary *NSDictionaryFromLibxmlAttributes (const xmlChar **at
 	
 	if( styleAttribute == nil )
 	{
-		SVGKitLogWarn(@"[%@] WARNING: asked to convert an empty CSS string into a CSS dictionary; returning empty dictionary", [self class] );
+//		SVGKitLogWarn(@"[%@] WARNING: asked to convert an empty CSS string into a CSS dictionary; returning empty dictionary", [self class] );
 		return [NSDictionary dictionary];
 	}
 	

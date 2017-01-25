@@ -114,8 +114,8 @@
 						
 						double ratioOfRatios = svgSVGElement.aspectRatioFromWidthPerHeight / svgSVGElement.aspectRatioFromViewBox;
 						
-						SVGKitLogWarn(@"ratioOfRatios = %.2f", ratioOfRatios );
-						SVGKitLogWarn(@"Experimental: auto-scaling viewbox transform to fulfil SVG spec's default MEET settings, because your SVG file has different aspect-ratios for viewBox and for svg.width,svg.height");
+//						SVGKitLogWarn(@"ratioOfRatios = %.2f", ratioOfRatios );
+//						SVGKitLogWarn(@"Experimental: auto-scaling viewbox transform to fulfil SVG spec's default MEET settings, because your SVG file has different aspect-ratios for viewBox and for svg.width,svg.height");
 						
 						/**
 						 For MEET, we have to SHRINK the viewbox's contents if they aren't as wide:high as the viewport:
@@ -210,8 +210,8 @@
 						scaleToViewBox = CGAffineTransformConcat( transformsThatHonourAspectRatioRequirements, scaleToViewBox );
 					}
 				}	
-				else
-					SVGKitLogWarn( @"Unsupported: preserveAspectRatio set to SLICE. Code to handle this doesn't exist yet.");
+//				else
+//					SVGKitLogWarn( @"Unsupported: preserveAspectRatio set to SLICE. Code to handle this doesn't exist yet.");
 				
 				transformSVGViewportToSVGViewBox = CGAffineTransformConcat( translateToViewBox, scaleToViewBox );
 			}
@@ -629,7 +629,7 @@
             
             else
             {
-                SVGKitLogWarn(@"Found unexpected preserve-aspect-ratio command inside element's 'preserveAspectRatio' attribute. Command = '%@'", aspectRatioCommand );
+//                SVGKitLogWarn(@"Found unexpected preserve-aspect-ratio command inside element's 'preserveAspectRatio' attribute. Command = '%@'", aspectRatioCommand );
             }
         }
     }

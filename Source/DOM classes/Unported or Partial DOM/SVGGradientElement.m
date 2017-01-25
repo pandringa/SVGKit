@@ -167,9 +167,9 @@
 		gradientLayer.radius = radius;
 		
 #ifdef SVG_DEBUG_GRADIENTS
-		SVGKitLogVerbose(@"Gradient start point %@ end point %@", NSStringFromCGPoint(startPoint), NSStringFromCGPoint(endPoint));
-		
-		SVGKitLogVerbose(@"SVGGradientElement gradientUnits == %@", gradientUnits);
+//		SVGKitLogVerbose(@"Gradient start point %@ end point %@", NSStringFromCGPoint(startPoint), NSStringFromCGPoint(endPoint));
+//		
+//		SVGKitLogVerbose(@"SVGGradientElement gradientUnits == %@", gradientUnits);
 #endif
 		
 		gradientLayer.centerPoint = gradientPoint;
@@ -245,9 +245,9 @@
 		}
 		
 #ifdef SVG_DEBUG_GRADIENTS
-        SVGKitLogVerbose(@"Gradient start point %@ end point %@", NSStringFromCGPoint(startPoint), NSStringFromCGPoint(endPoint));
-        
-        SVGKitLogVerbose(@"SVGGradientElement gradientUnits == %@", gradientUnits);
+//        SVGKitLogVerbose(@"Gradient start point %@ end point %@", NSStringFromCGPoint(startPoint), NSStringFromCGPoint(endPoint));
+//        
+//        SVGKitLogVerbose(@"SVGGradientElement gradientUnits == %@", gradientUnits);
 #endif
         
         //    return gradientLayer;
@@ -290,10 +290,10 @@
     [gradientLayer setColors:_colors];
     [gradientLayer setLocations:_locations];
 	
-	SVGKitLogVerbose(@"[%@] set gradient layer start = %@", [self class], NSStringFromCGPoint(gradientLayer.startPoint));
-	SVGKitLogVerbose(@"[%@] set gradient layer end = %@", [self class], NSStringFromCGPoint(gradientLayer.endPoint));
-	SVGKitLogVerbose(@"[%@] set gradient layer colors = %@", [self class], _colors);
-	SVGKitLogVerbose(@"[%@] set gradient layer locations = %@", [self class], _locations);
+//	SVGKitLogVerbose(@"[%@] set gradient layer start = %@", [self class], NSStringFromCGPoint(gradientLayer.startPoint));
+//	SVGKitLogVerbose(@"[%@] set gradient layer end = %@", [self class], NSStringFromCGPoint(gradientLayer.endPoint));
+//	SVGKitLogVerbose(@"[%@] set gradient layer colors = %@", [self class], _colors);
+//	SVGKitLogVerbose(@"[%@] set gradient layer locations = %@", [self class], _locations);
 //    gradientLayer.colors = colors;
 //    gradientLayer.locations = locations;
     

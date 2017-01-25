@@ -60,7 +60,7 @@
 		[self removeObserver:self forKeyPath:@"showBorder"];
 	}
 	@catch (NSException *exception) {
-		SVGKitLogError(@"Exception removing showBorder observer");
+//		SVGKitLogError(@"Exception removing showBorder observer");
 	}
 	
 	self.SVGImage = nil;

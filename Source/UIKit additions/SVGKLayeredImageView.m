@@ -74,7 +74,7 @@
 	if( im == nil )
 	{
 #ifndef SVGK_DONT_USE_EMPTY_IMAGE_PLACEHOLDER
-        SVGKitLogWarn(@"[%@] WARNING: you have initialized an [%@] with a blank image (nil). Possibly because you're using Storyboards or NIBs which Apple won't allow us to decorate. Make sure you assign an SVGKImage to the .image property!", [self class], [self class]);
+//        SVGKitLogWarn(@"[%@] WARNING: you have initialized an [%@] with a blank image (nil). Possibly because you're using Storyboards or NIBs which Apple won't allow us to decorate. Make sure you assign an SVGKImage to the .image property!", [self class], [self class]);
 		
 		self.backgroundColor = [UIColor clearColor];
         
@@ -85,7 +85,7 @@
             <path d=\"M28.35 64.08C28.41 65.06 28.64 65.85 29.04 66.46 29.82 67.6 31.18 68.17 33.13 68.17 34.01 68.17 34.8 68.05 35.52 67.8 36.91 67.31 37.61 66.45 37.61 65.2 37.61 64.26 37.32 63.59 36.73 63.19 36.14 62.8 35.21 62.46 33.94 62.17L31.61 61.65C30.09 61.3 29.01 60.92 28.38 60.51 27.28 59.79 26.73 58.72 26.73 57.29 26.73 55.74 27.27 54.47 28.34 53.48 29.41 52.49 30.93 51.99 32.89 51.99 34.69 51.99 36.22 52.42 37.49 53.3 38.75 54.17 39.38 55.56 39.38 57.47L37.19 57.47C37.07 56.55 36.82 55.84 36.44 55.35 35.73 54.45 34.52 54.01 32.82 54.01 31.44 54.01 30.45 54.29 29.85 54.87 29.25 55.45 28.95 56.12 28.95 56.89 28.95 57.73 29.3 58.35 30 58.74 30.46 58.99 31.51 59.3 33.13 59.68L35.55 60.23C36.71 60.49 37.61 60.86 38.24 61.32 39.34 62.12 39.88 63.29 39.88 64.82 39.88 66.73 39.19 68.09 37.8 68.91 36.42 69.73 34.8 70.14 32.97 70.14 30.83 70.14 29.15 69.59 27.94 68.5 26.73 67.42 26.14 65.94 26.16 64.08L28.35 64.08ZM44.2 52.42L49.14 67.08 54.03 52.42 56.64 52.42 50.36 69.64 47.89 69.64 41.62 52.42 44.2 52.42ZM70.48 52.92C72.19 53.81 73.24 55.39 73.62 57.64L71.31 57.64C71.03 56.38 70.45 55.46 69.57 54.89 68.68 54.32 67.57 54.03 66.23 54.03 64.63 54.03 63.29 54.63 62.2 55.82 61.11 57.02 60.57 58.8 60.57 61.17 60.57 63.21 61.02 64.88 61.91 66.16 62.81 67.45 64.28 68.09 66.31 68.09 67.86 68.09 69.15 67.64 70.17 66.74 71.19 65.84 71.71 64.38 71.73 62.36L66.34 62.36 66.34 60.43 73.9 60.43 73.9 69.64 72.4 69.64 71.84 67.42C71.05 68.29 70.35 68.89 69.74 69.23 68.72 69.81 67.42 70.09 65.84 70.09 63.8 70.09 62.05 69.43 60.58 68.11 58.98 66.46 58.18 64.18 58.18 61.29 58.18 58.41 58.96 56.12 60.52 54.42 62 52.79 63.93 51.98 66.29 51.98 67.9 51.98 69.3 52.29 70.48 52.92L70.48 52.92Z\" fill=\"#F8E81C\"/> \
         </svg>";
         
-		SVGKitLogInfo(@"About to make a blank image using the inlined SVG = %@", svgStringDefaultContents);
+//		SVGKitLogInfo(@"About to make a blank image using the inlined SVG = %@", svgStringDefaultContents);
 		
 		SVGKImage* defaultBlankImage = [SVGKImage imageWithSource:[SVGKSourceString sourceFromContentsOfString:svgStringDefaultContents]];
 		
